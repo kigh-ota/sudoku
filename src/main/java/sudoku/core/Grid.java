@@ -2,10 +2,12 @@ package sudoku.core;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableTable;
 import com.google.common.collect.Table;
 
 import java.util.Collection;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -81,5 +83,14 @@ public class Grid {
       }
     }
     return builder.build();
+  }
+
+  public Set<Position> getUnfilledSquares() {
+    return squares
+        .cellSet()
+        .stream()
+        .filter(cell -> cell.getValue() == 0)
+        .map(cell -> Position.of(cell.getRowKey(), cell.getColumnKey()))
+        .collect(Collectors.toSet());
   }
 }

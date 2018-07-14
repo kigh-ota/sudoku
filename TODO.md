@@ -8,7 +8,12 @@
   - toString
   - Grid同士の比較
   - Puzzleクラス
-- spotless導入
+  - 残り1マスだけの問題が解ける
+  - ok ある空きマスに入れられる数字を取得
+  - ok 詰んでいるかどうかを判定
+  - 候補が唯一のマスを埋めて、新しいGridを生成
+- ok spotless導入
+- gradle testで全テスト実行
 - CI構築
 
 

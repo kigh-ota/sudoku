@@ -6,6 +6,33 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class PuzzleTest {
   @Test
+  void solve_あと1マス() {
+    String gridStr =
+        "435269781\n"
+            + "682571493\n"
+            + "197834562\n"
+            + "826195347\n"
+            + "374682915\n"
+            + "951743.28\n"
+            + "519326874\n"
+            + "248957136\n"
+            + "763418259";
+    String solutionStr =
+        "435269781\n"
+            + "682571493\n"
+            + "197834562\n"
+            + "826195347\n"
+            + "374682915\n"
+            + "951743628\n"
+            + "519326874\n"
+            + "248957136\n"
+            + "763418259";
+    Grid puzzle = new Grid(gridStr);
+    Grid solution = new Puzzle(puzzle).solve();
+    assertThat(solution).isEqualTo(new Grid(solutionStr));
+  }
+
+  @Test
   void solve() {
     String gridStr =
         "...26.7.1\n"

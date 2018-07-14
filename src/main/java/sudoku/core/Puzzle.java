@@ -1,7 +1,12 @@
 package sudoku.core;
 
 public class Puzzle {
-  Puzzle(Grid grid) {}
+
+  private Grid grid;
+
+  Puzzle(Grid grid) {
+    this.grid = grid;
+  }
 
   Grid solve() {
     return new Grid(
