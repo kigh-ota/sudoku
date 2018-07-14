@@ -4,6 +4,10 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableTable;
 import com.google.common.collect.Table;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class Grid {
 
     private static final int SIZE = 9;
@@ -45,5 +49,18 @@ public class Grid {
         return "Grid{" +
                 "squares=" + squares +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.toString().equals(obj.toString());
+    }
+
+    public Collection<Integer> getRow(int row) {
+        return IntStream.rangeClosed(1, SIZE).map((col) -> squares.get(row, col)).boxed().collect(Collectors.toList());
+    }
+
+    public Collection<Integer> getCol(int col) {
+        return IntStream.rangeClosed(1, SIZE).map((row) -> squares.get(row, col)).boxed().collect(Collectors.toList());
     }
 }

@@ -6,6 +6,8 @@
   - Gridをパズルとして評価
   - すべて埋まっているGridが数独として正しい配置か判定
   - toString
+  - Grid同士の比較
+  - Puzzleクラス
 - spotless導入
 - CI構築
 
