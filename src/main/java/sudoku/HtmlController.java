@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HtmlController {
-    @GetMapping("/")
-    public String home(Model model) {
-        model.addAttribute("title", "Sudoku");
-        return "home";
-    }
+  @GetMapping("/")
+  public String home(Model model) {
+    model.addAttribute("title", "Sudoku");
+    return "home";
+  }
 }

@@ -14,13 +14,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class IntegrationTests {
-    @Autowired
-    private TestRestTemplate restTemplate;
+  @Autowired private TestRestTemplate restTemplate;
 
-    @Test
-    void assert_page_title_content_and_status_code() {
-        ResponseEntity<String> entity = restTemplate.getForEntity("/", String.class);
-        assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(entity.getBody()).contains("<h1>Sudoku</h1>");
-    }
+  @Test
+  void assert_page_title_content_and_status_code() {
+    ResponseEntity<String> entity = restTemplate.getForEntity("/", String.class);
+    assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertThat(entity.getBody()).contains("<h1>Sudoku</h1>");
+  }
 }
