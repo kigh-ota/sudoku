@@ -1,6 +1,7 @@
 package sudoku.core;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableTable;
 import com.google.common.collect.Table;
 
@@ -10,7 +11,7 @@ import java.util.stream.IntStream;
 
 public class Grid {
 
-  private static final int SIZE = 9;
+  static final int SIZE = 9;
 
   Table<Integer, Integer, Integer> squares;
 
@@ -66,5 +67,19 @@ public class Grid {
         .map((row) -> squares.get(row, col))
         .boxed()
         .collect(Collectors.toList());
+  }
+
+  public Collection<Integer> getBlock(int blockRow, int blockCol) {
+    ImmutableList.Builder<Integer> builder = ImmutableList.builder();
+    int rowOffset = 1 + (blockRow - 1) * 3;
+    for (int r = 0; r < 3; r++) {
+      int row = rowOffset + r;
+      int colOffset = 1 + (blockCol - 1) * 3;
+      for (int c = 0; c < 3; c++) {
+        int col = colOffset + c;
+        builder.add(squares.get(row, col));
+      }
+    }
+    return builder.build();
   }
 }

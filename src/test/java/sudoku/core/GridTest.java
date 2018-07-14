@@ -43,7 +43,7 @@ class GridTest {
   }
 
   @Test
-  void getRow() {
+  void getRow_etc() {
     String gridStr =
         "...26.7.1\n"
             + "68..7..9.\n"
@@ -57,5 +57,7 @@ class GridTest {
     assertThat(new Grid(gridStr).getRow(1)).isEqualTo(ImmutableList.of(0, 0, 0, 2, 6, 0, 7, 0, 1));
     assertThat(new Grid(gridStr).getRow(2)).isEqualTo(ImmutableList.of(6, 8, 0, 0, 7, 0, 0, 9, 0));
     assertThat(new Grid(gridStr).getCol(1)).isEqualTo(ImmutableList.of(0, 6, 1, 8, 0, 0, 0, 0, 7));
+    assertThat(new Grid(gridStr).getBlock(1, 1))
+        .isEqualTo(ImmutableList.of(0, 0, 0, 6, 8, 0, 1, 9, 0));
   }
 }

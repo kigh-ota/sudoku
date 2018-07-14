@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SudokuEvaluatorTest {
   @Test
-  void isRowFilled() {
+  void isRowFilled_etc() {
     Grid grid =
         new Grid(
             "435269781\n"
@@ -20,5 +20,9 @@ class SudokuEvaluatorTest {
                 + "763418259");
     assertThat(new SudokuEvaluator(grid).isRowFilled(1)).isTrue();
     assertThat(new SudokuEvaluator(grid).isRowFilled(2)).isFalse();
+    assertThat(new SudokuEvaluator(grid).isColFilled(1)).isTrue();
+    assertThat(new SudokuEvaluator(grid).isColFilled(2)).isFalse();
+    assertThat(new SudokuEvaluator(grid).isBlockFilled(1, 1)).isFalse();
+    assertThat(new SudokuEvaluator(grid).isBlockFilled(1, 2)).isTrue();
   }
 }
