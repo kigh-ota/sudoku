@@ -1,17 +1,17 @@
 # TODO
 
 - 数独の例題が解ける
-  - Gridクラスを作る
+  - ok Gridクラスを作る
   - ok 文字列でGridを初期化
   - Gridをパズルとして評価
-  - すべて埋まっているGridが数独として正しい配置か判定
+  - next: 完了判定
   - toString
-  - Grid同士の比較
-  - Puzzleクラス
+  - ok Grid同士の比較
+  - ok Puzzleクラス
   - 残り1マスだけの問題が解ける
   - ok ある空きマスに入れられる数字を取得
   - ok 詰んでいるかどうかを判定
-  - 候補が唯一のマスを埋めて、新しいGridを生成
+  - ok 候補が唯一のマスを埋めて、新しいGridを生成
 - ok spotless導入
 - gradle testで全テスト実行
 - CI構築
