@@ -2,6 +2,8 @@ package sudoku.core;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableTable;
+import com.google.common.collect.Table;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -102,5 +104,42 @@ class GridTest {
         }
       }
     }
+  }
+
+  @Test
+  void empty() {
+    Grid emptyGrid =
+        new Grid(
+            ".........\n"
+                + ".........\n"
+                + ".........\n"
+                + ".........\n"
+                + ".........\n"
+                + ".........\n"
+                + ".........\n"
+                + ".........\n"
+                + ".........");
+    assertThat(Grid.empty()).isEqualTo(emptyGrid);
+  }
+
+  @Test
+  void set() {
+    Grid grid = Grid.empty();
+    Table<Integer, Integer, Integer> setter =
+        new ImmutableTable.Builder().put(1, 1, 1).put(2, 2, 2).build();
+    Grid added = grid.set(setter);
+    assertThat(added)
+        .isEqualTo(
+            new Grid(
+                "1........\n"
+                    + ".2.......\n"
+                    + ".........\n"
+                    + ".........\n"
+                    + ".........\n"
+                    + ".........\n"
+                    + ".........\n"
+                    + ".........\n"
+                    + "........."));
+    assertThat(added).isNotSameAs(grid);
   }
 }

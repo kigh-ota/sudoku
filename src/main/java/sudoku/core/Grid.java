@@ -15,7 +15,7 @@ public class Grid {
 
   static final int SIZE = 9;
 
-  Table<Integer, Integer, Integer> squares;
+  private Table<Integer, Integer, Integer> squares;
 
   Grid(String str) {
     ImmutableTable.Builder builder = new ImmutableTable.Builder();
@@ -92,5 +92,35 @@ public class Grid {
         .filter(cell -> cell.getValue() == 0)
         .map(cell -> Position.of(cell.getRowKey(), cell.getColumnKey()))
         .collect(Collectors.toSet());
+  }
+
+  public static Grid empty() {
+    return new Grid(
+        ".........\n"
+            + ".........\n"
+            + ".........\n"
+            + ".........\n"
+            + ".........\n"
+            + ".........\n"
+            + ".........\n"
+            + ".........\n"
+            + ".........");
+  }
+
+  public Grid set(Table<Integer, Integer, Integer> setter) {
+    Grid newGrid = empty();
+    ImmutableTable.Builder<Integer, Integer, Integer> builder = ImmutableTable.builder();
+    for (int row = 1; row <= SIZE; row++) {
+      for (int col = 1; col <= SIZE; col++) {
+        Integer digit = setter.get(row, col);
+        if (digit != null) {
+          builder.put(row, col, digit);
+        } else {
+          builder.put(row, col, this.squares.get(row, col));
+        }
+      }
+    }
+    newGrid.squares = builder.build();
+    return newGrid;
   }
 }
