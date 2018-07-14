@@ -104,6 +104,16 @@ class GridTest {
         }
       }
     }
+    Grid grid2 = new Puzzle(grid).fillInCertainCells();
+    sudokuEvaluator = new SudokuEvaluator(grid2);
+    for (int row = 1; row <= SIZE; row++) {
+      for (int col = 1; col <= SIZE; col++) {
+        if (grid2.get(row, col) == 0) {
+          System.out.println(
+              String.format("(%d,%d) => %s", row, col, sudokuEvaluator.getCandidates(row, col)));
+        }
+      }
+    }
   }
 
   @Test

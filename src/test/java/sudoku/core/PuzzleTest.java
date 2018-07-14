@@ -58,4 +58,31 @@ class PuzzleTest {
     Grid solution = new Puzzle(puzzle).solve();
     assertThat(solution).isEqualTo(new Grid(solutionStr));
   }
+
+  @Test
+  void fillInCertainCells() {
+    String gridStr =
+        "435269781\n"
+            + "682571493\n"
+            + "197834562\n"
+            + "826195347\n"
+            + "374682915\n"
+            + "951743.28\n"
+            + "519326874\n"
+            + "248957136\n"
+            + "763418259";
+    String filledStr =
+        "435269781\n"
+            + "682571493\n"
+            + "197834562\n"
+            + "826195347\n"
+            + "374682915\n"
+            + "951743628\n"
+            + "519326874\n"
+            + "248957136\n"
+            + "763418259";
+    Grid puzzle = new Grid(gridStr);
+    Grid filled = new Puzzle(puzzle).fillInCertainCells();
+    assertThat(filled).isEqualTo(new Grid(filledStr));
+  }
 }
